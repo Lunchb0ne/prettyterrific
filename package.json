@@ -1,18 +1,21 @@
 {
-  "name": "nuxtjs",
+  "name": "prettyterrific",
   "version": "1.0.0",
-  "description": "My astonishing Nuxt.js project",
-  "author": "msweeneydev",
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt generate",
-    "start": "nuxt start"
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "export": "nuxt export",
+    "serve": "nuxt serve"
   },
   "dependencies": {
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.13.0",
+    "vuesax": "^4.0.1-alpha.20"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5"
   }
 }
