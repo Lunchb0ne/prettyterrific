@@ -5,7 +5,13 @@
     align="center"
     justify="center"
   >
-    <div>is my life even</div>
+    <div>
+      {{
+        $auth.loggedIn
+          ? "Your email is " + $auth.user.email
+          : "Why are you here?"
+      }}
+    </div>
   </div>
 </template>
 <script></script>

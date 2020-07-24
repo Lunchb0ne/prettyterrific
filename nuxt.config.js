@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 export default {
   /*
    ** Nuxt rendering mode
@@ -55,7 +57,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [],
+  buildModules: ["@nuxtjs/dotenv"],
   /*
    ** Nuxt.js modules
    */
@@ -65,6 +67,13 @@ export default {
     "@nuxtjs/pwa",
     "@nuxtjs/auth",
   ],
+  auth: {
+    strategies: {
+      google: {
+        client_id: process.env.googlekey,
+      },
+    },
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

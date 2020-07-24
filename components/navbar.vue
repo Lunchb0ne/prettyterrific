@@ -16,16 +16,20 @@
     <vs-navbar-item :active="active == 'about'" id="about" to="/about">
       About
     </vs-navbar-item>
-    <vs-navbar-item :active="active == 'dafuq'" id="dafuq" to="/dafuq">
+    <vs-navbar-item
+      v-if="$auth.loggedIn"
+      :active="active == 'dafuq'"
+      id="dafuq"
+      to="/dafuq"
+    >
       dafuq
     </vs-navbar-item>
     <template #right>
-      <vs-button v-if="$auth.loggedIn"
+      <vs-button v-if="$auth.loggedIn" @click="logout"
         ><i class="bx bx-log-out"></i>&nbsp;Logout</vs-button
       >
-      <vs-button v-else><i class="bx bx-log-in"></i>&nbsp;Login</vs-button>
-      <vs-button v-if="!$auth.loggedIn"
-        ><i class="bx bx-user-plus"></i>&nbsp;Register</vs-button
+      <vs-button v-else @click="google"
+        ><i class="bx bx-log-in"></i>&nbsp;Login</vs-button
       >
     </template>
   </vs-navbar>
@@ -35,5 +39,18 @@ export default {
   data: () => ({
     active: "home",
   }),
+  methods: {
+    async google() {
+      await this.$auth.loginWith("google").catch((e) => {
+        console.log("Error" + e);
+      });
+    },
+    async logout() {
+      window.location.reload(true);
+      await this.$auth.logout().catch((e) => {
+        console.log("Error" + e);
+      });
+    },
+  },
 };
 </script>

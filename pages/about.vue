@@ -5,7 +5,7 @@
     align="center"
     justify="center"
   >
-    <div>I'm hate this</div>
+    <div>I hate this</div>
   </div>
 </template>
 <script></script>
