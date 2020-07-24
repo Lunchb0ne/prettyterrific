@@ -25,9 +25,14 @@
       dafuq
     </vs-navbar-item>
     <template #right>
-      <vs-button v-if="$auth.loggedIn" @click="logout"
-        ><i class="bx bx-log-out"></i>&nbsp;Logout</vs-button
-      >
+      <vs-button
+        v-if="$auth.loggedIn"
+        :animate-inactive="successFace"
+        @click="handleClickFace"
+        :loading="loadingFace"
+        ><i class="bx bx-log-out"></i>&nbsp;Logout
+        <template #animate>Really?</template>
+      </vs-button>
       <vs-button v-else @click="google"
         ><i class="bx bx-log-in"></i>&nbsp;Login</vs-button
       >
@@ -38,6 +43,9 @@
 export default {
   data: () => ({
     active: "home",
+
+    loadingFace: false,
+    successFace: false,
   }),
   methods: {
     async google() {
@@ -45,11 +53,16 @@ export default {
         console.log("Error" + e);
       });
     },
-    async logout() {
-      window.location.reload(true);
-      await this.$auth.logout().catch((e) => {
-        console.log("Error" + e);
-      });
+    async handleClickFace() {
+      this.loadingFace = true;
+      setTimeout(() => {
+        this.loadingFace = false;
+        this.successFace = !this.successFace;
+        this.$auth.logout().catch((e) => {
+          console.log("Error" + e);
+        });
+        window.location.reload(true);
+      }, 2000);
     },
   },
 };
