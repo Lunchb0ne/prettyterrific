@@ -57,19 +57,30 @@
       <template #logo>
         <img src="/main.svg" alt="" />
       </template>
-      <vs-sidebar-item id="home" :active="active == 'home'" to="/">
+      <vs-sidebar-item
+        @click="activeSidebar = !activeSidebar"
+        id="home"
+        :active="active == 'home'"
+        to="/"
+      >
         <template #icon>
           <i class="bx bx-home"></i>
         </template>
         Home
       </vs-sidebar-item>
-      <vs-sidebar-item :active="active == 'about'" id="about" to="/about">
+      <vs-sidebar-item
+        @click="activeSidebar = false"
+        :active="active == 'about'"
+        id="about"
+        to="/about"
+      >
         <template #icon>
           <i class="bx bx-label"></i>
         </template>
         About
       </vs-sidebar-item>
       <vs-sidebar-item
+        @click="activeSidebar = false"
         v-if="$auth.loggedIn"
         :active="active == 'dafuq'"
         id="dafuq"
