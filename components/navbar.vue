@@ -6,6 +6,7 @@
     padding-scroll
     center-collapsed
     v-model="active"
+    class="condensed"
   >
     <template #left>
       <img src="/main.svg" alt="" />
@@ -67,3 +68,8 @@ export default {
   },
 };
 </script>
+<style>
+button {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+}
+</style>
