@@ -66,6 +66,7 @@ export default {
     "@nuxtjs/axios",
     "@nuxtjs/pwa",
     "@nuxtjs/auth",
+    "@nuxtjs/device",
   ],
   auth: {
     strategies: {
