@@ -27,11 +27,11 @@
       </vs-navbar-item>
       <vs-navbar-item
         v-if="$auth.loggedIn"
-        :active="active == 'dafuq'"
-        id="dafuq"
-        to="/dafuq"
+        :active="active == 'profile'"
+        id="profile"
+        to="/profile"
       >
-        dafuq
+        profile
       </vs-navbar-item>
       <template #right>
         <vs-button
@@ -82,13 +82,13 @@
       <vs-sidebar-item
         @click="activeSidebar = false"
         v-if="$auth.loggedIn"
-        :active="active == 'dafuq'"
-        id="dafuq"
-        to="/dafuq"
+        :active="active == 'profile'"
+        id="profile"
+        to="/profile"
         ><template #icon>
           <i class="bx bx-question-mark"></i>
         </template>
-        dafuq
+        profile
       </vs-sidebar-item>
     </vs-sidebar>
   </div>
@@ -96,33 +96,33 @@
 <script>
 export default {
   data: () => ({
-    active: "home",
+    active: 'home',
     activeSidebar: false,
     loadingFace: false,
     successFace: false,
   }),
   methods: {
     async google() {
-      await this.$auth.loginWith("google").catch((e) => {
-        console.log("Error" + e);
-      });
+      await this.$auth.loginWith('google').catch((e) => {
+        console.log('Error' + e)
+      })
     },
     async handleClickFace() {
-      this.loadingFace = true;
+      this.loadingFace = true
       setTimeout(() => {
-        this.loadingFace = false;
-        this.successFace = !this.successFace;
+        this.loadingFace = false
+        this.successFace = !this.successFace
         this.$auth.logout().catch((e) => {
-          console.log("Error" + e);
-        });
-        window.location.reload(true);
-      }, 2000);
+          console.log('Error' + e)
+        })
+        window.location.reload(true)
+      }, 2000)
     },
   },
-};
+}
 </script>
 <style>
 button {
-  font-family: "IBM Plex Sans Condensed", sans-serif;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
 }
 </style>
