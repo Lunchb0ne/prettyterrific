@@ -8,8 +8,8 @@
     <div>
       {{
         $auth.loggedIn
-          ? "Your email is " + $auth.user.email
-          : "Why are you here?"
+          ? 'Your email is ' + $auth.user.email
+          : 'Why are you here?'
       }}
     </div>
   </div>
